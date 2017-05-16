@@ -8,15 +8,22 @@ public class BulletScript : MonoBehaviour {
     Vector3 Target;
 	void Start () {
         Vector3 mousePos = Input.mousePosition;
-        Target = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x,mousePos.y,Camera.main.transform.position.y));
-        Target = Target - transform.position;
+        RaycastHit hit;
+        Ray TargetRay = Camera.main.ScreenPointToRay(mousePos);
+        Physics.Raycast(TargetRay, out hit);
+        Target = hit.point - transform.position;
         Target.y = 0;
         Target = Target.normalized;
         print(Target);
         StartCoroutine(DestroySelf());
+        print(mousePos);
+        print(hit);
+        print(TargetRay);
+        print(hit.point);
+        print(Target);
     }
-	
-	void FixedUpdate () {
+
+    void FixedUpdate () {
         transform.position += Target*bulletSpeed;
         transform.Rotate(new Vector3(0,RotateSpeed, 0));
         //Vector3.MoveTowards(transform.position,Target,bulletSpeed);
