@@ -14,22 +14,24 @@ public class PatrolScript : MonoBehaviour
     NavMeshAgent myNavMesh;
     int ActualPoint = 0;
     GameObject Player;
-    public State actualState, savedState;
+    public State savedState;
+    private State ActualState;
     GameControler GC;
     Coroutine ActuallMovement;
     [SerializeField]
     float lookAroundDelay = 0.5f, lookAroundSpeed = 1f, lookAroundAngleMin = 20f, lookAroundAngleMax = 100f;
-    public State ActualState
+    public State actualState
     {
         get
         {
-            return actualState;
+            return ActualState;
         }
 
         set
         {
-            actualState = value;
-            print("Changed state! New state: "+actualState);
+            ActualState = value;
+            print("Changed state! New state: "+ActualState);
+            if(!actualState.Equals(State.Immersed))
             StartCoroutine(ContinuePatrol());
         }
     }
@@ -42,6 +44,7 @@ public class PatrolScript : MonoBehaviour
         myNavMesh = GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player");
         myNavMesh.SetDestination(PatrolPoints[ActualPoint].position);
+        actualState = State.Immersed;
     }
 
     public enum State

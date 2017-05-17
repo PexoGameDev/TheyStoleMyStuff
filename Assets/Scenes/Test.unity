@@ -904,7 +904,6 @@ MonoBehaviour:
   - {fileID: 1299774083}
   - {fileID: 1722502432}
   SeenPlayerPosition: {x: 0, y: 0, z: 0}
-  actualState: 1
   savedState: 0
   lookAroundDelay: 0.5
   lookAroundSpeed: 2
@@ -938,7 +937,7 @@ NavMeshAgent:
   m_Acceleration: 50
   avoidancePriority: 99
   m_AngularSpeed: 200
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0.6
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -1711,9 +1710,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 329378500}
-  - {fileID: 1615519760}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788391623
 GameObject:
@@ -2667,7 +2665,7 @@ RectTransform:
   m_Children:
   - {fileID: 1668889941}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3478,8 +3476,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 258753313}
-  m_Father: {fileID: 765774830}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1615519761
 MeshRenderer:
@@ -4397,7 +4395,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1893869170
 GameObject:

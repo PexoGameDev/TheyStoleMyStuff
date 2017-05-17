@@ -17,7 +17,7 @@ public class GuardVisionCone : MonoBehaviour {
     IEnumerator CanISeePlayer()
     {
         if (!Physics.Linecast(transform.parent.position, Player.transform.position))
-            myPatrol.ActualState = PatrolScript.State.Hostile;
+            myPatrol.actualState = PatrolScript.State.Hostile;
         else
             if (myPatrol.actualState == PatrolScript.State.Hostile)
             myPatrol.actualState = PatrolScript.State.Alerted;
@@ -36,10 +36,10 @@ public class GuardVisionCone : MonoBehaviour {
         {
             if (other.CompareTag("Player") && SeeingPlayer == null)
                 SeeingPlayer = StartCoroutine(CanISeePlayer());
-            if (other.CompareTag("TargetContainer") && myPatrol.ActualState != PatrolScript.State.Hostile)
+            if (other.CompareTag("TargetContainer") && myPatrol.actualState != PatrolScript.State.Hostile)
             {
                 print("I've noticed empty target container! I'm alerted now!");
-                myPatrol.ActualState = PatrolScript.State.Alerted;
+                myPatrol.actualState = PatrolScript.State.Alerted;
             }
         }
     }
