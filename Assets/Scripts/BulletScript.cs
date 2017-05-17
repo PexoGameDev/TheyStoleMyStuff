@@ -14,22 +14,13 @@ public class BulletScript : MonoBehaviour {
         Target = hit.point - transform.position;
         Target.y = 0;
         Target = Target.normalized;
-        print(Target);
         StartCoroutine(DestroySelf());
-        print(mousePos);
-        print(hit);
-        print(TargetRay);
-        print(hit.point);
-        print(Target);
     }
 
     void FixedUpdate () {
         transform.position += Target*bulletSpeed;
         transform.Rotate(new Vector3(0,RotateSpeed, 0));
-        //Vector3.MoveTowards(transform.position,Target,bulletSpeed);
-        //WORKS BUT ISNT PRECISE, FIX IT
-        //Maybe instead -> Guard Script, OnMouseStay, if left click then shoot from player to guard? Finally it's not 2.5D Shooter but stealth, plus you've never done such a thing
-    }
+        }
 
     IEnumerator DestroySelf()
     {

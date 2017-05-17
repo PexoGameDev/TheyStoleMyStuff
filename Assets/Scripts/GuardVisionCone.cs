@@ -36,10 +36,12 @@ public class GuardVisionCone : MonoBehaviour {
         {
             if (other.CompareTag("Player") && SeeingPlayer == null)
                 SeeingPlayer = StartCoroutine(CanISeePlayer());
-            //if (other.tag == "TargetContainer" && myPatrol.ActualState != PatrolScript.State.Hostile)
-            //     myPatrol.ActualState = PatrolScript.State.Alerted;
+            if (other.CompareTag("TargetContainer") && myPatrol.ActualState != PatrolScript.State.Hostile)
+            {
+                print("I've noticed empty target container! I'm alerted now!");
+                myPatrol.ActualState = PatrolScript.State.Alerted;
+            }
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -56,11 +58,5 @@ public class GuardVisionCone : MonoBehaviour {
             }
             print("PlayerLeftFOV");
         }
-    }
-
-
-    private void Update()
-    {
-        Debug.DrawRay(transform.parent.position, Player.transform.position, Color.red);
     }
 }

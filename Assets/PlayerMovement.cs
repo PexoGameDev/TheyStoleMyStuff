@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour {
             //MovementDestination.y = 0;
             mousePos = Input.mousePosition;
             myNavMesh.SetDestination(MovementDestination);
-            print(myNavMesh.destination);
         }
 	}
 }
