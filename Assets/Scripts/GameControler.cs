@@ -35,7 +35,6 @@ public class GameControler : MonoBehaviour {
         // print(myMouse.shootTexture);
         //Cursor.SetCursor(myMouse.shootTexture, Vector2.zero, CursorMode.Auto);
         PatrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
-        print(PatrolPoints);
     }
 	void Update () {
         

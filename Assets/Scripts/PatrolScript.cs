@@ -31,7 +31,7 @@ public class PatrolScript : MonoBehaviour
         set
         {
             ActualState = value;
-            print("Changed state! New state: "+ActualState);
+            //print("Changed state! New state: "+ActualState);
             if(!actualState.Equals(State.Immersed))
             StartCoroutine(ContinuePatrol());
         }
@@ -57,17 +57,15 @@ public class PatrolScript : MonoBehaviour
             for (int i = 0; i < GC.PatrolPoints.Length; i++)
             {
                AllPatrolPoints.Add(GC.PatrolPoints[i]);
-               //print(AllPatrolPoints[i]);
             }
             for (int i = 0; i < PatrolPoints.Length; i++)
             {
                 int tmpRand = (int)Random.Range(0, AllPatrolPoints.Count);
                 PatrolPoints[i]=GC.PatrolPoints[tmpRand].GetComponent<Transform>();
-                print(AllPatrolPoints[tmpRand]);
-                AllPatrolPoints.RemoveAt(tmpRand);
-                print(AllPatrolPoints[tmpRand]);
+                print("This should be removed:"+AllPatrolPoints[tmpRand]);
+                AllPatrolPoints.Remove(AllPatrolPoints[tmpRand]);//AllPatrolPoints.RemoveAt(tmpRand);
+                print("This is here now:"+AllPatrolPoints[tmpRand]);
             }
-            print(PatrolPoints);
         }
     }
     public enum State
