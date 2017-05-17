@@ -24,10 +24,28 @@ public class GuardVisionCone : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         SeeingPlayer = null;
     }
+
+    IEnumerator NoticedEmptyContainer(GameObject Container)
+    {
+        if (!Physics.Linecast(transform.parent.position, Container.transform.position))
+        {
+            transform.parent.LookAt(Container.transform);
+            yield return new WaitForSeconds(0.5f);
+            myPatrol.SeenPlayerPosition = Container.transform.position;
+            myPatrol.actualState = PatrolScript.State.SeenPlayer;
+        }
+            yield return new WaitForSeconds(0.1f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
-        print("PlayerEnteredFOV");   
+        if (GC.StateOfTarget == GameControler.TargetState.PickedUp)
+        {
+            if (other.CompareTag("TargetContainer") && myPatrol.actualState != PatrolScript.State.Hostile && myPatrol.savedState != PatrolScript.State.Alerted)
+            {
+                StartCoroutine(NoticedEmptyContainer(other.gameObject));
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -36,11 +54,6 @@ public class GuardVisionCone : MonoBehaviour {
         {
             if (other.CompareTag("Player") && SeeingPlayer == null)
                 SeeingPlayer = StartCoroutine(CanISeePlayer());
-            if (other.CompareTag("TargetContainer") && myPatrol.actualState != PatrolScript.State.Hostile)
-            {
-                print("I've noticed empty target container! I'm alerted now!");
-                myPatrol.actualState = PatrolScript.State.Alerted;
-            }
         }
     }
 
