@@ -7,7 +7,8 @@ using UnityEngine.AI;
 
 public class PatrolScript : MonoBehaviour
 {
-
+    [SerializeField]
+    int PatrolPointsCount = 5;
     public Transform[] PatrolPoints;
     [HideInInspector]
     public Vector3 SeenPlayerPosition;
@@ -43,10 +44,32 @@ public class PatrolScript : MonoBehaviour
         GC = GameObject.FindGameObjectWithTag("GameScripts").GetComponent<GameControler>();
         myNavMesh = GetComponent<NavMeshAgent>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        RandomizePatrolPoints();
         myNavMesh.SetDestination(PatrolPoints[ActualPoint].position);
         actualState = State.Immersed;
     }
-
+    void RandomizePatrolPoints()
+    {
+        if(PatrolPoints.Length<=0)
+        {
+            List<GameObject> AllPatrolPoints = new List<GameObject>();
+            PatrolPoints = new Transform[5];
+            for (int i = 0; i < GC.PatrolPoints.Length; i++)
+            {
+               AllPatrolPoints.Add(GC.PatrolPoints[i]);
+               //print(AllPatrolPoints[i]);
+            }
+            for (int i = 0; i < PatrolPoints.Length; i++)
+            {
+                int tmpRand = (int)Random.Range(0, AllPatrolPoints.Count);
+                PatrolPoints[i]=GC.PatrolPoints[tmpRand].GetComponent<Transform>();
+                print(AllPatrolPoints[tmpRand]);
+                AllPatrolPoints.RemoveAt(tmpRand);
+                print(AllPatrolPoints[tmpRand]);
+            }
+            print(PatrolPoints);
+        }
+    }
     public enum State
     {
         Peacefull, Immersed, Alerted, Hostile, SeenPlayer

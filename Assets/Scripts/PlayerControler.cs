@@ -8,6 +8,16 @@ public class PlayerControler : MonoBehaviour {
 
     //Privates
     GameControler GC;
+    [SerializeField]
+    private PlayerState myPlayerState;
+    public PlayerState MyPlayerState
+    {
+        get { return myPlayerState; }
+        set { myPlayerState = value; if (value == PlayerState.Caught) print("TheyGotMe"); }
+    }
+    public enum PlayerState
+    { Normal,Caught,Dead };
+
     void Start () {
         GC = GameObject.FindGameObjectWithTag("GameScripts").GetComponent<GameControler>();
     }
@@ -16,8 +26,9 @@ public class PlayerControler : MonoBehaviour {
         if(other.tag=="Target")
         {
             other.transform.SetParent(transform);
-            other.transform.localPosition = new Vector3(0.5f, 1f, 0f);
+            other.transform.localPosition = new Vector3(0f, 2f, 0f);
             GC.StateOfTarget = GameControler.TargetState.PickedUp;
+            other.GetComponent<Collider>().enabled = false;
         }
     }
 }

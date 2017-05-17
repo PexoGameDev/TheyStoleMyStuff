@@ -8,8 +8,6 @@ public class GuardScript : MonoBehaviour {
     GameObject Player;
     GameControler GC;
     PatrolScript myPatrol;
-    [SerializeField]
-    float VisionAngle = 40f, VisionDistance = 19.5f;
     void Start () {
         Player = GameObject.FindGameObjectWithTag("Player");
         GC     = GameObject.FindGameObjectWithTag("GameScripts").GetComponent<GameControler>();

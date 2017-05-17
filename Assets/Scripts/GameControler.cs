@@ -5,6 +5,12 @@ using UnityEngine;
 public class GameControler : MonoBehaviour {
 
     private TargetState stateOfTarget;
+    private GameObject[] patrolPoints;
+    public GameObject[] PatrolPoints
+    {
+        get { return patrolPoints; }
+        set { patrolPoints = value; }
+    }
     public Mouse myMouse;
     public TargetState StateOfTarget
     {
@@ -24,10 +30,12 @@ public class GameControler : MonoBehaviour {
         NotPickedUp,PickedUp
     }
 
-	void Start () {
+	void Awake () {
         // myMouse = Instantiate<Mouse>(new Mouse());
         // print(myMouse.shootTexture);
         //Cursor.SetCursor(myMouse.shootTexture, Vector2.zero, CursorMode.Auto);
+        PatrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
+        print(PatrolPoints);
     }
 	void Update () {
         

@@ -8,6 +8,7 @@ TagManager:
   - Target
   - Enemy
   - TargetContainer
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX
