@@ -54,17 +54,13 @@ public class PatrolScript : MonoBehaviour
         {
             List<GameObject> AllPatrolPoints = new List<GameObject>();
             PatrolPoints = new Transform[5];
-            for (int i = 0; i < GC.PatrolPoints.Length; i++)
-            {
+            for (int i = 0; i <  GC.PatrolPoints.Length; i++)
                AllPatrolPoints.Add(GC.PatrolPoints[i]);
-            }
             for (int i = 0; i < PatrolPoints.Length; i++)
             {
-                int tmpRand = (int)Random.Range(0, AllPatrolPoints.Count);
-                PatrolPoints[i]=GC.PatrolPoints[tmpRand].GetComponent<Transform>();
-                print("This should be removed:"+AllPatrolPoints[tmpRand]);
-                AllPatrolPoints.Remove(AllPatrolPoints[tmpRand]);//AllPatrolPoints.RemoveAt(tmpRand);
-                print("This is here now:"+AllPatrolPoints[tmpRand]);
+                int tmpRand = (int)Random.Range(0, AllPatrolPoints.Count-1);
+                PatrolPoints[i]=AllPatrolPoints[tmpRand].GetComponent<Transform>();
+                AllPatrolPoints.RemoveAt(tmpRand);
             }
         }
     }
