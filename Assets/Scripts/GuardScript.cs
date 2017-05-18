@@ -17,11 +17,10 @@ public class GuardScript : MonoBehaviour {
     private void OnMouseEnter()
     {
         Cursor.SetCursor(GC.myMouse.shootTexture,Vector2.zero, CursorMode.Auto);
-        print("Should be done");
     }
     private void OnMouseExit()
     {
-        print("Ran away!");
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
 

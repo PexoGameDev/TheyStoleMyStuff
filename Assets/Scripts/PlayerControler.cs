@@ -13,10 +13,10 @@ public class PlayerControler : MonoBehaviour {
     public PlayerState MyPlayerState
     {
         get { return myPlayerState; }
-        set { myPlayerState = value; if (value == PlayerState.Caught) print("TheyGotMe"); }
+        set { myPlayerState = value; if (value == PlayerState.Caught) { print("TheyGotMe"); gameObject.GetComponent<Renderer>().material.color = Color.red; } }
     }
     public enum PlayerState
-    { Normal,Caught,Dead };
+    { Stealthed, Unstealthed, Caught };
 
     void Start () {
         GC = GameObject.FindGameObjectWithTag("GameScripts").GetComponent<GameControler>();
@@ -29,6 +29,7 @@ public class PlayerControler : MonoBehaviour {
             other.transform.localPosition = new Vector3(0f, 2f, 0f);
             GC.StateOfTarget = GameControler.TargetState.PickedUp;
             other.GetComponent<Collider>().enabled = false;
+            MyPlayerState = PlayerState.Unstealthed;
         }
     }
 }

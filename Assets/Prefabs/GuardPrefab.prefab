@@ -298,7 +298,7 @@ Animator:
   m_GameObject: {fileID: 1889215812166774}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d4afa9e3137eeee48830264352c8f9b4, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1908decb5c567264bb71d6fc46f0cd6c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -334,8 +334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd99b73295aaef24eb473d600441ae67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VisionAngle: 40
-  VisionDistance: 19.5
 --- !u!114 &114766743783858212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,14 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da4bf23aa82a5248b00b806c6fcc68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PatrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  PatrolPointsCount: 5
+  PatrolPoints: []
   SeenPlayerPosition: {x: 0, y: 0, z: 0}
   savedState: 0
   lookAroundDelay: 0.5
