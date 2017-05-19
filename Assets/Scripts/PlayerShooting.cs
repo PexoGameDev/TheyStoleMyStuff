@@ -20,7 +20,7 @@ public class PlayerShooting : MonoBehaviour {
 
     IEnumerator Shoot()
     {
-        GameObject tmpBullet = Instantiate(BulletPrefab,transform.position,Quaternion.identity);
+        Instantiate(BulletPrefab,transform.position,Quaternion.identity);
         yield return new WaitForSeconds(WeaponDelay);
         ActualShooting = null;
     }
