@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ExitScript : MonoBehaviour {
 
+    
 
     GameControler GC;
 
@@ -13,7 +14,7 @@ public class ExitScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.tag == "Player" && GC.StateOfTarget == GameControler.TargetState.PickedUp)
-          //  print("Player Won!");
+        if (other.CompareTag("Player") && GC.StateOfTarget == GameControler.TargetState.PickedUp)
+            print("Player Won!");
     }
 }
